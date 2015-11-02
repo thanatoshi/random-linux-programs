@@ -1,0 +1,27 @@
+echo "Are you sure you want to shut down? " 
+read -p  "[Yy]es, [Nn]o, specify [Tt]ime, [Cc]ancel a pending shutdown. " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    # shutdown
+	sudo /sbin/shutdown now
+else
+	if [[ $REPLY =~ ^[Tt]$ ]]
+	then
+    #timed shutdown
+		echo "Put the time you want to shutdown in army time."
+		read time
+		sudo shutdown $time
+	else
+		if [[ $REPLY =~ ^[Cc]$ ]]
+	then
+    	   #cancel
+			read -p "Cancel shutdown? " -n 1 -r
+			if [[ $REPLY =~ ^[Yy]$ ]]
+			then
+	   		  # cancel
+				sudo shutdown -c
+			fi
+		fi	
+	fi
+fi
