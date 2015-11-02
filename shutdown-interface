@@ -9,7 +9,7 @@ else
 	if [[ $REPLY =~ ^[Tt]$ ]]
 	then
     #timed shutdown
-		echo "Put the time you want to shutdown in army time."
+		echo "Put the time you want to shutdown in army time, in this format: hh:mm"
 		read time
 		sudo shutdown $time
 	else
